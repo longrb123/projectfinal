@@ -1,0 +1,198 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<!--
+---- Clean html template by http://WpFreeware.com
+---- This is the main file (index.html).
+---- You are allowed to change anything you like. Find out more Awesome Templates @ wpfreeware.com
+---- Read License-readme.txt file to learn more.
+-->
+
+<head>
+    <base href="/assets/client/">
+    <title>Welcome to my site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Oswald Font -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/tooltipster.css" />
+    <!-- home slider-->
+    <link href="css/pgwslider.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="style.css" rel="stylesheet" media="screen">
+    <link href="responsive.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+    <section id="header_area">
+        <div class="wrapper header">
+            <div class="clearfix header_top">
+                <div class="clearfix logo floatleft">
+                    <a href="">
+                        <h1><span>Gaming</span> Community</h1>
+                    </a>
+                </div>
+                <div class="clearfix search floatright">
+                    <form>
+                        <input type="text" placeholder="Search" />
+                        <input type="submit" />
+                    </form>
+                </div>
+
+            </div>
+            <div class="header_bottom">
+                <nav>
+                    <ul id="nav">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/addpost">Post</a></li>
+                        <%  if (user) {%>
+                        <li><a href="/chat">Messenger</a></li>
+                        <li><a href="/profile-<%=user._id%>">Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                        <li><a href="/login">Login</a></li>
+                        <% } %>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <section id="content_area">
+        <div class="clearfix wrapper main_content_area">
+            <div class="clearfix main_content floatleft">
+                <div class="clearfix content">
+                    <div class="clearfix single_content">
+                        <% products.forEach((product) => { %>
+                        <div class="clearfix post_date floatleft">
+                            <div class="w3-display-container">
+                                <img src="/assets/images/products/<%=product.user_id.user_img%>" alt=""
+                                    style="width: 60px; height: 60px;" />
+                            </div>
+                        </div>
+                        <div class="clearfix post_detail">
+                            <h2><a href=""><%= product.prd_title %></a></h2>
+                            <div class="clearfix post-meta">
+                                <p><span><i class="fa fa-user"></i> <%= product.user_id.user_fullName%></span>
+                                    <span><i class="fa fa-clock-o"></i> <%= product.createdAt%></span> <br> <br>
+                                    <span><i class="fa fa-folder"> <%= product.cate_id.cate_name%></i></span>
+                                    <span><i class="fa fa-money"> <%= product.prd_price%>$</i></span>
+                                </p>
+                            </div>
+                            <div class="clearfix post_excerpt">
+                                <img src="/assets/images/products/<%=product.prd_image%>" alt="" />
+                                <p><%= product.prd_detail%></p>
+                            </div>
+                            <a href="/postdetails-<%=product._id%>">Continue Reading</a>
+                        </div>
+                        <% }) %>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="clearfix sidebar_container floatright">
+                <div class="clearfix sidebar">
+                    <div class="clearfix single_footer_top floatleft">
+                        <h2>Categories</h2>
+                        <ul>
+                            <% for(let menu of menus) { %>
+                            <li><a href="/category-<%=menu._id %>"><%= menu.cate_name%></a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer_top_area">
+        <div class="clearfix wrapper footer_top">
+            <div class="clearfix footer_top_container">
+                <div class="clearfix single_footer_top floatleft">
+                    <h2>From Twitter</h2>
+                    <p></p>
+                </div>
+                <div class="clearfix single_footer_top floatleft">
+                    <h2>Recent Post</h2>
+                    <p></p>
+                </div>
+                <div class="clearfix single_footer_top floatleft">
+                    <h2>Usefull Links</h2>
+                    <ul>
+                        <li><a href="">Important links of this site</a></li>
+                        <li><a href="">Important links of this site</a></li>
+                        <li><a href="">Important links of this site</a></li>
+                        <li><a href="">Important links of this site</a></li>
+                        <li><a href="">Important links of this site</a></li>
+                        <li><a href="">Important links of this site</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer_bottom_area">
+        <div class="clearfix wrapper footer_bottom">
+            <div class="clearfix copyright floatleft">
+                <p> Copyright &copy; All rights reserved by <span>Wpfreeware.com</span></p>
+            </div>
+            <div class="clearfix social floatright">
+                <ul>
+                    <li><a class="tooltip" title="Facebook" href=""><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a class="tooltip" title="Twitter" href=""><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a class="tooltip" title="Google+" href=""><i class="fa fa-google-plus-square"></i></a></li>
+                    <li><a class="tooltip" title="LinkedIn" href=""><i class="fa fa-linkedin-square"></i></a></li>
+                    <li><a class="tooltip" title="tumblr" href=""><i class="fa fa-tumblr-square"></i></a></li>
+                    <li><a class="tooltip" title="Pinterest" href=""><i class="fa fa-pinterest-square"></i></a></li>
+                    <li><a class="tooltip" title="RSS Feed" href=""><i class="fa fa-rss-square"></i></a></li>
+                    <li><a class="tooltip" title="Sitemap" href=""><i class="fa fa-sitemap"></i> </a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tooltipster.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.tooltip').tooltipster();
+        });
+    </script>
+    <script type="text/javascript" src="js/selectnav.min.js"></script>
+    <script type="text/javascript">
+        selectnav('nav', {
+            label: '-Navigation-',
+            nested: true,
+            indent: '-'
+        });
+    </script>
+    <script src="js/pgwslider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.pgwSlider').pgwSlider({
+
+                intervalDuration: 5000
+
+            });
+        });
+    </script>
+    <script type="text/javascript" src="js/placeholder_support_IE.js"></script>
+
+    <!--
+---- Clean html template by http://WpFreeware.com
+---- This is the main file (index.html).
+---- You are allowed to change anything you like. Find out more Awesome Templates @ wpfreeware.com
+---- Read License-readme.txt file to learn more.
+-->
+
+</body>
+
+</html>

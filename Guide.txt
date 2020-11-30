@@ -1,0 +1,2 @@
+In the DBProject folder contains the database for the project. Users need to import the database into MongoDB before running the program.
+After importing the data, the user opens the projectfinal folder on Visual Studio Code and runs the terminal with the command npm start
